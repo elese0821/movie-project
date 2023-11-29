@@ -1,20 +1,18 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import HeaderSection from '@/components/section/HeaderSection.vue';
+import FooterSection from '@/components/section/FooterSection.vue';
 
 const movies = ref([]);
-
-onMounted(async () => {
-  // 초기 페이지 로딩 시 최신 영화를 가져옴
-  await fetchMovies('latest');
-});
+const searchKeyword = ref('');
 
 const fetchMovies = async (category) => {
   let url = 'https://api.themoviedb.org/3/movie/popular';
 
   switch (category) {
     case 'latest':
-      url = "https://api.themoviedb.org/3/movie/now_playing";
+      url = 'https://api.themoviedb.org/3/movie/now_playing';
       break;
     case 'popular':
       url = 'https://api.themoviedb.org/3/movie/popular'
@@ -36,129 +34,131 @@ const fetchMovies = async (category) => {
       }
     });
     movies.value = response.data.results;
+    console.log(response.data.results)
   } catch (err) {
     console.log(err)
   }
 }
 
-const searchQuery = ref('');
-
-const searchMovies = async () => {
-  let url = 'https://api.themoviedb.org/3/search/movie';
+const serachMovies = async () => {
   try {
-    const response = await axios.get(url, {
+    const response = await axios.get('https://api.themoviedb.org/3/search/movie', {
       params: {
-        api_key: 'b7abb2107f0ffe0549f78058d75127f8',
+        api_key: '9278d13f704ad0fe53c2263b692efd89',
         language: 'ko-KR',
-        page: '1',
-        include_adult: 'false',
-        query: searchQuery.value,  // 검색어를 query 파라미터로 사용
+        query: searchKeyword.value
       }
     });
     movies.value = response.data.results;
   } catch (err) {
-    console.log(err)
+    console.error(err);
   }
 }
 
-
-
+onMounted(async () => {
+  await fetchMovies('latest');
+});
 </script>
 
 <template>
-  <main>
-    <div class="movie__container">
-
+  <HeaderSection />
+  <main id="main" role="main">
+    <div class="container">
       <div class="movie__inner">
-        <section class="movie_search">
-          <h2 class="blind">검색하기</h2>
-          <input type="search" v-model="searchQuery" placeholder="검색어를 입력해주세요!">
-          <button type="submit" @click="searchMovies">검색</button>
-        </section>
 
-        <div class="movie_tag">
+        <section class="movie__search">
+          <h2 class="blind">검색하기</h2>
+          <input type="search" v-model="searchKeyword" placeholder="검색어를 입력해주세요!" @keyup.enter="serachMovies">
+          <button type="submit" @click="serachMovies">검색</button>
+        </section>
+        <!-- //movie__search -->
+
+        <div class="movie__tag">
           <ul>
             <li><a href="#" @click="fetchMovies('latest')">최신 영화</a></li>
             <li><a href="#" @click="fetchMovies('popular')">인기 영화</a></li>
             <li><a href="#" @click="fetchMovies('upcoming')">개봉 예정</a></li>
             <li><a href="#" @click="fetchMovies('toprated')">최고 평점</a></li>
           </ul>
-
         </div>
+        <!-- //movie__tag -->
 
-        <section class="movie_cont">
+        <section class="movie__cont">
           <h2 class="blind">영화</h2>
-          <div class="movie" v-for="movie in movies" :key="movie.id">
-            <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title">
-            <p class="title">{{ movie.title }}</p>
+          <div class="movie play__icon" v-for="movie in movies" :key="movie.id">
+            <a :href="'/detail/' + movie.id">
+              <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title">
+            </a>
           </div>
         </section>
+        <!-- //movie__cont -->
 
       </div>
     </div>
   </main>
+  <FooterSection />
 </template>
 
+
+
+
 <style lang="scss">
-.movie_search {
-  padding: 20px;
+.movie__search {
+  margin: 50px 0 20px;
+  position: relative;
 
   input {
-    border: 2px solid var(--black600);
-    padding: 1rem;
+    border: 1px solid var(--black600);
+    padding: 1rem 2rem;
     width: 100%;
     border-radius: 50px;
-    background-color: transparent;
-    color: #fff;
   }
 
   button {
     position: absolute;
-    right: 25px;
-    top: 24px;
-    border-radius: 100%;
-    width: 45px;
-    height: 45px;
-
+    right: 6px;
+    top: 6px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--black);
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
   }
 }
 
-.movie_tag {
+.movie__tag {
   ul {
     display: flex;
-    width: 100%;
 
     li {
       a {
         border: 1px solid var(--black);
-        padding: 0.5rem 1rem;
-        display: block;
+        padding: 0.5rem 1.3rem;
+        display: inline-block;
         border-radius: 50px;
         margin-bottom: 20px;
         margin-right: 10px;
         margin-top: 20px;
 
         &:hover {
-          background-color: var(--black300);
-
+          background-color: var(--black);
+          color: var(--white);
         }
       }
     }
   }
 }
 
-.movie__inner {
-  .movie_cont {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
+.movie__cont {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
   .movie {
     width: 24%;
-    background-color: #fff;
-    margin-left: 5px;
-    margin-bottom: 2%;
+    margin-bottom: 1.5%;
     background-color: #ccc;
   }
 }
