@@ -46,8 +46,7 @@ export default {
                 </nav>
             </div>
             <div class="header__intro"
-                :style="movieInfo.backdrop_path ? {
-                    backgroundImage: 'url(https://image.tmdb.org/t/p/w500' + movieInfo.backdrop_path) '} : {}">
+                :style="{ backgroundImage: 'url(https://image.tmdb.org/t/p/w500' + movieInfo.backdrop_path) }">
                 <div class="container">
                     <div class="left play__icon">
                         <a href="#">
