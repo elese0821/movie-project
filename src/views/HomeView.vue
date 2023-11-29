@@ -75,6 +75,7 @@ const searchMovies = async () => {
           <input type="search" v-model="searchQuery" placeholder="검색어를 입력해주세요!">
           <button type="submit" @click="searchMovies">검색</button>
         </section>
+
         <div class="movie_tag">
           <ul>
             <li><a href="#" @click="fetchMovies('latest')">최신 영화</a></li>
@@ -84,6 +85,7 @@ const searchMovies = async () => {
           </ul>
 
         </div>
+
         <section class="movie_cont">
           <h2 class="blind">영화</h2>
           <div class="movie" v-for="movie in movies" :key="movie.id">
