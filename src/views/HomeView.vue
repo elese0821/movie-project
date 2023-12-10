@@ -105,18 +105,25 @@ onMounted(async () => {
 .movie__search {
   margin: 50px 0 20px;
   position: relative;
+  padding: 0 1rem;
 
   input {
-    border: 1px solid var(--black600);
+    border: 1px solid black;
     padding: 1rem 2rem;
     width: 100%;
     border-radius: 50px;
+    background-color: #3f3f3f4f;
+    color: #fff;
+
+    &:active {
+      border-color: black;
+    }
   }
 
   button {
     position: absolute;
-    right: 6px;
-    top: 6px;
+    right: 1.4rem;
+    top: 0.3rem;
     width: 40px;
     height: 40px;
     background-color: var(--black);

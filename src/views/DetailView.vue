@@ -7,7 +7,7 @@ import DetailIntro from '@/components/detail/DetailIntro.vue';
 import DetailReview from '@/components/detail/DetailReview.vue';
 import DetailCredits from '@/components/detail/DetailCredits.vue';
 import DetailInfo from '@/components/detail/DetailInfo.vue';
-import Similarvideo from '@/components/detail/Similarvideo.vue';
+// import Similarvideo from '@/components/detail/Similarvideo.vue';
 
 export default {
     name: "MovieDetailPage",
@@ -18,7 +18,7 @@ export default {
         DetailReview,
         DetailCredits,
         DetailInfo,
-        Similarvideo,
+        // Similarvideo,
     },
 
     setup() {
@@ -41,7 +41,7 @@ export default {
                 movieBasic.value = resMovieBasic.data;
 
                 const resMovieInfo = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}&language=${language}`);
-                movieInfo.value = resMovieInfo.data;
+                movieInfo.value = resMovieInfo.data.results;
 
                 const resMovieReview = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=${page}&api_key=${apiKey}`);
                 movieReview.value = resMovieReview.data.results;
@@ -49,14 +49,17 @@ export default {
                 const resMovieCredits = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?language=${language}&api_key=${apiKey}`);
                 movieCredits.value = resMovieCredits.data;
 
-                const resSimilar = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/similar?language=${language}&page=${page}&api_key=${apiKey}`);
-                similar.value = resSimilar.data;
+                // const resSimilar = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/similar?language=${language}&page=${page}&api_key=${apiKey}`);
+                // similar.value = resSimilar.data.results;
 
             } catch (err) {
                 console.log(err);
             }
         });
-        return { movieBasic, movieCredits, movieReview, movieInfo, similar }
+        return {
+            movieBasic, movieCredits, movieReview, movieInfo,
+            // similar
+        }
     }
 }
 </script>
@@ -76,10 +79,10 @@ export default {
     </header>
     <main id="main">
         <DetailIntro v-if="movieBasic" :movieBasic="movieBasic" />
+        <DetailInfo v-if="movieInfo" :movieInfo="movieInfo" />
         <DetailCredits v-if="movieCredits" :movieCredits="movieCredits" />
         <DetailReview v-if="movieReview" :movieReview="movieReview" />
-        <DetailInfo v-if="movieInfo" :movieInfo="movieInfo" />
-        <Similarvideo v-if="similar" :similar="similar" />
+        <!-- <Similarvideo v-if="similar" :similar="similar" /> -->
     </main>
 </template>
 

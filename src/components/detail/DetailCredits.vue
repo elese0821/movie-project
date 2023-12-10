@@ -46,8 +46,8 @@ export default {
     .cre_wrap {
         display: flex;
         overflow: auto;
-        gap: 2rem;
-        padding: 1rem;
+        gap: 1.5rem;
+        padding: 1.5rem;
         background-color: #131313;
         border-radius: 5px 5px 0 0;
 
@@ -75,15 +75,15 @@ export default {
 
                         img {
                             object-fit: cover;
-                            width: 170px;
-                            border-radius: 1px;
+                            width: 150px;
+                            border-radius: 2px;
                         }
 
                         .noimg {
                             background-color: #ebebeba9;
-                            width: 170px;
+                            width: 150px;
                             border-radius: 1px;
-                            height: 255.33px;
+                            height: 225.33px;
                             display: flex;
                             align-items: center;
 

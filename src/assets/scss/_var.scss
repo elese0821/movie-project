@@ -17,9 +17,9 @@
     --white400: #8e8e8e;
     --white500: #767676;
 
-    --red: #f00;
+    --red: rgb(255, 27, 11);
+    --sub: #fff;
 
-    // 폰트 셋팅
     font-family: var(--mainfont-nanum), var(--mainfont-nexon);
     font-size: 16px;
     line-height: 1.5;

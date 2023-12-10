@@ -1,11 +1,27 @@
 <template>
     <div class="review_wrap">
         <h1>리뷰</h1>
+        <!-- <div v-if="movieReview.length > 0">
+            <div class="reviews" v-for="review in movieReview" :key="review.id">
+                <div class="review" v-if="review.content">
+                    <h3><span>{{ review.author }}</span>(이)가 {{ formatDate(review.created_at) }}에 작성</h3>
+                    <p :class="{ 'clamp': !showFullText }">{{ review.content }}</p>
+                    <button v-if="review.content.length > 100" @click="showFullText = !showFullText">
+                        {{ showFullText ? '접기' : '더보기' }}
+                    </button>
+                </div>
+            </div>
+        </div> -->
         <div v-if="movieReview.length > 0">
             <div class="reviews" v-for="review in movieReview" :key="review.id">
                 <div class="review" v-if="review.content">
                     <h3><span>{{ review.author }}</span>(이)가 {{ formatDate(review.created_at) }}에 작성</h3>
-                    <p>{{ review.content }}</p>
+                    <div class="content" :class="{ 'clamp': showFullText }">
+                        <p>{{ review.content }}</p>
+                    </div>
+                    <button v-if="review.content.length > 50" @click="showFullText = !showFullText">
+                        {{ showFullText ? '접기' : '더보기' }}
+                    </button>
                 </div>
             </div>
         </div>
@@ -19,8 +35,6 @@
     </div>
 </template>
 <script>
-
-
 export default {
     props: ['movieReview'],
     methods: {
@@ -31,7 +45,12 @@ export default {
             const day = date.getDate();
             return `${year}년 ${month}월 ${day}일`;
         }
-    }
+    },
+    data() {
+        return {
+            showFullText: false,
+        }
+    },
 }
 </script>
 
@@ -45,6 +64,8 @@ export default {
     }
 
     .reviews {
+        position: relative;
+
         .review {
             background-color: #2929295e;
             padding: 1rem;
@@ -54,8 +75,32 @@ export default {
                 margin-bottom: 0.5rem;
             }
 
-            p {
+            .content {
                 color: #929292;
+                line-height: 1.6em;
+                height: 6.5em;
+                /* line-height times lines */
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 4;
+            }
+
+            .content.clamp {
+                -webkit-line-clamp: initial;
+                overflow: initial;
+                height: auto;
+            }
+
+            button {
+                margin-top: 0.2rem;
+                background-color: transparent;
+                padding: 0.5rem;
+                cursor: pointer;
+                position: relative;
+                color: #bbbbbb;
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
     }
