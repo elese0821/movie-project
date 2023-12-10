@@ -34,7 +34,6 @@ const fetchMovies = async (category) => {
       }
     });
     movies.value = response.data.results;
-    console.log(response.data.results)
   } catch (err) {
     console.log(err)
   }
