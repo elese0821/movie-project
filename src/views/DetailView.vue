@@ -67,16 +67,19 @@ export default {
     <header id="header" role="banner">
         <div class="header__inner">
             <div class="header__nav">
-                <h1>Movie Star</h1>
+                <h1>let's <span>movie</span></h1>
                 <nav>
                     <ul>
-                        <li><a href="#">웹쓰 영화 Top10</a></li>
-                        <li><a href="#">코딩 영화 Top10</a></li>
+                        <li><a href="#">월간 Top10</a></li>
+                        <li><a href="#">주간 Top10</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
+
+
+
     <main id="main">
         <DetailIntro v-if="movieBasic" :movieBasic="movieBasic" />
         <DetailInfo v-if="movieInfo" :movieInfo="movieInfo" />

@@ -1,27 +1,11 @@
 <template>
     <div class="review_wrap">
         <h1>리뷰</h1>
-        <!-- <div v-if="movieReview.length > 0">
-            <div class="reviews" v-for="review in movieReview" :key="review.id">
-                <div class="review" v-if="review.content">
-                    <h3><span>{{ review.author }}</span>(이)가 {{ formatDate(review.created_at) }}에 작성</h3>
-                    <p :class="{ 'clamp': !showFullText }">{{ review.content }}</p>
-                    <button v-if="review.content.length > 100" @click="showFullText = !showFullText">
-                        {{ showFullText ? '접기' : '더보기' }}
-                    </button>
-                </div>
-            </div>
-        </div> -->
         <div v-if="movieReview.length > 0">
             <div class="reviews" v-for="review in movieReview" :key="review.id">
                 <div class="review" v-if="review.content">
                     <h3><span>{{ review.author }}</span>(이)가 {{ formatDate(review.created_at) }}에 작성</h3>
-                    <div class="content" :class="{ 'clamp': showFullText }">
-                        <p>{{ review.content }}</p>
-                    </div>
-                    <button v-if="review.content.length > 50" @click="showFullText = !showFullText">
-                        {{ showFullText ? '접기' : '더보기' }}
-                    </button>
+                    <p class="content">{{ review.content }}</p>
                 </div>
             </div>
         </div>
@@ -77,20 +61,9 @@ export default {
 
             .content {
                 color: #929292;
-                line-height: 1.6em;
-                height: 6.5em;
-                /* line-height times lines */
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 4;
+                line-height: 1.6;
             }
 
-            .content.clamp {
-                -webkit-line-clamp: initial;
-                overflow: initial;
-                height: auto;
-            }
 
             button {
                 margin-top: 0.2rem;

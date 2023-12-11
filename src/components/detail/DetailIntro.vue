@@ -167,8 +167,9 @@ export default {
                     overflow: auto;
                     text-overflow: ellipsis;
                     display: -webkit-box;
-                    -webkit-line-clamp: 6;
+                    -webkit-line-clamp: 5;
                     -webkit-box-orient: vertical;
+                    min-width: 143px;
 
                     &::-webkit-scrollbar {
                         width: 10px;
