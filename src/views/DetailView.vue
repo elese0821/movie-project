@@ -26,7 +26,7 @@ export default {
         const movieInfo = ref(null);
         const movieReview = ref(null);
         const movieCredits = ref(null);
-        const similar = ref(null);
+        // const similar = ref(null);
 
         const route = useRoute();
 
