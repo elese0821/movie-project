@@ -91,30 +91,6 @@ Done. Now run:
 
 ### 추가내용
 
-### `ref` 함수
-
-- **목적**: Vue.js에서 `ref`는 반응성 데이터를 생성하는 데 사용됩니다.
-- **사용법**: `ref`로 생성된 변수는 `.value` 속성을 통해 접근하고 수정합니다.
-- **특징**: Vue 3에서는 원시값이나 객체를 반응성 데이터로 만들 수 있습니다.
-- **예시**:
-  ```javascript
-  import { ref } from 'vue'
-  const count = ref(0) // count는 반응성 데이터
-  ```
-
-### `onMounted` 함수
-
-- **목적**: 컴포넌트 마운트 시 실행할 로직을 정의합니다.
-- **사용법**: 컴포넌트가 DOM에 마운트된 후에 필요한 작업을 수행할 때 사용합니다.
-- **활용**: 외부 API 호출, 데이터 초기화 등을 수행합니다.
-- **예시**:
-  ```javascript
-  import { onMounted } from 'vue'
-  onMounted(() => {
-    console.log('컴포넌트가 마운트되었습니다.')
-  })
-  ```
-
 ### `v-for` 디렉티브
 
 - **목적**: 배열이나 객체의 각 항목을 반복하여 데이터 목록을 렌더링합니다.
@@ -135,6 +111,30 @@ Done. Now run:
   <div v-bind:id="dynamicId"></div>
   <!-- 또는 축약형 -->
   <div :id="dynamicId"></div>
+  ```
+
+### `onMounted` 함수
+
+- **목적**: 컴포넌트 마운트 시 실행할 로직을 정의합니다.
+- **사용법**: 컴포넌트가 DOM에 마운트된 후에 필요한 작업을 수행할 때 사용합니다.
+- **활용**: 외부 API 호출, 데이터 초기화 등을 수행합니다.
+- **예시**:
+  ```javascript
+  import { onMounted } from 'vue'
+  onMounted(() => {
+    console.log('컴포넌트가 마운트되었습니다.')
+  })
+  ```
+
+### `ref` 함수
+
+- **목적**: Vue.js에서 `ref`는 반응성 데이터를 생성하는 데 사용됩니다.
+- **사용법**: `ref`로 생성된 변수는 `.value` 속성을 통해 접근하고 수정합니다.
+- **특징**: Vue 3에서는 원시값이나 객체를 반응성 데이터로 만들 수 있습니다.
+- **예시**:
+  ```javascript
+  import { ref } from 'vue'
+  const count = ref(0) // count는 반응성 데이터
   ```
 
 ### Postman
