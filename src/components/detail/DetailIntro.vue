@@ -137,7 +137,8 @@ export default {
                 top: 60%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                background-color: rgba(10, 10, 10, 0.74);
+                background-color:#0a0a0a5e;
+                backdrop-filter: blur(6px);
             }
 
             @media (max-width:500px) {
