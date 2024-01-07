@@ -123,7 +123,7 @@ export default {
                     }
 
                     p {
-                        color: aqua;
+                        color: var(--red);
 
                     }
 
