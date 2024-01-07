@@ -23,6 +23,7 @@ CSS 프레임워크: Sass
 ```
 npm install sass
 npm install axios
+npm install vue-router
 ```
 
 ## 셋팅

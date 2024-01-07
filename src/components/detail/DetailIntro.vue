@@ -8,66 +8,67 @@
                 </a>
             </div>
             <div class="right">
-                <div class="detail_tit">
-                    <h2>{{ movieBasic.title }}</h2>
-                    <p>{{ movieBasic.original_title }}, {{ movieBasic.release_date.substr(0, 4) }}</p>
-                </div>
-
-                <div class="detail_cont">
-                    <div class="inner_cont">
-                        <dl class="list_cont">
-                            <dt>개봉</dt>
-                            <dd class="dd_type">
-                                {{ movieBasic.release_date }}
-                            </dd>
-                        </dl>
-
-
-                        <dl class="list_cont">
-                            <dt>장르</dt>
-                            <dd class="dd_type">
-                                <span v-for="(movie, index) in movieBasic.genres" :key="index">
-                                    {{ movie.name }}<i v-if="index !== movieBasic.genres.length - 1">/</i>
-                                </span>
-                            </dd>
-                        </dl>
-
-                        <dl class="list_cont">
-                            <dt>국가</dt>
-                            <dd>{{ movieBasic.production_countries[0].name }}</dd>
-                        </dl>
-                        <dl class="list_cont">
-                            <dt>등급</dt>
-                            <dd>2023-09-27</dd>
-                        </dl>
-
-                        <dl class="list_cont">
-                            <dt>러닝타임</dt>
-                            <dd>{{ movieBasic.runtime }}분</dd>
-                        </dl>
-
+                <div class="right__inner">
+                    <div class="detail_tit">
+                        <h2>{{ movieBasic.title }}</h2>
+                        <p>{{ movieBasic.original_title }}, {{ movieBasic.release_date.substr(0, 4) }}</p>
                     </div>
 
-                    <div class="inner_cont right_cont">
-                        <dl class="list_cont">
-                            <dt>평점 </dt>
-                            <dd>
-                                <span class='ico_movie ico_star'>
-                                </span>
-                                {{ (Math.round(movieBasic.vote_average * 10) / 10).toFixed(1) }}
-                                <span class="font_color">({{ movieBasic.vote_count }})</span>
-                            </dd>
-                        </dl>
+                    <div class="detail_cont">
+                        <div class="inner_cont">
+                            <dl class="list_cont">
+                                <dt>개봉</dt>
+                                <dd class="dd_type">
+                                    {{ movieBasic.release_date }}
+                                </dd>
+                            </dl>
 
+                            <dl class="list_cont">
+                                <dt>장르</dt>
+                                <dd class="dd_type">
+                                    <span v-for="(movie, index) in movieBasic.genres" :key="index">
+                                        {{ movie.name }}<i v-if="index !== movieBasic.genres.length - 1">/</i>
+                                    </span>
+                                </dd>
+                            </dl>
 
+                            <dl class="list_cont">
+                                <dt>국가</dt>
+                                <dd>{{ movieBasic.production_countries[0].name }}</dd>
+                            </dl>
+                            <dl class="list_cont">
+                                <dt>등급</dt>
+                                <dd>2023-09-27</dd>
+                            </dl>
+
+                            <dl class="list_cont">
+                                <dt>러닝타임</dt>
+                                <dd>{{ movieBasic.runtime }}분</dd>
+                            </dl>
+
+                        </div>
+
+                        <div class="inner_cont right_cont">
+                            <dl class="list_cont">
+                                <dt>평점 </dt>
+                                <dd>
+                                    <span class='ico_movie ico_star'>
+                                    </span>
+                                    {{ (Math.round(movieBasic.vote_average * 10) / 10).toFixed(1) }}
+                                    <span class="font_color">({{ movieBasic.vote_count }})</span>
+                                </dd>
+                            </dl>
+                        </div>
                     </div>
-
                 </div>
-
 
                 <dl class="list_cont last_cont" v-if="movieBasic.overview">
                     <dt>주요정보</dt>
                     <dd class="line8">{{ movieBasic.overview }}</dd>
+                </dl>
+                <dl class="list_cont last_cont" v-else>
+                    <dt>주요정보</dt>
+                    <dd class="line8">정보가 없습니다.</dd>
                 </dl>
             </div>
         </div>
@@ -95,57 +96,98 @@ export default {
         position: absolute;
         left: 0;
         top: 0;
-        background-color: #00000032;
+        background-color: #00000070;
         backdrop-filter: blur(7px);
         z-index: 1;
     }
 
     .container {
         display: flex;
-        justify-content: flex-start;
         position: relative;
         z-index: 10;
+        justify-content: center;
 
         .left {
             width: 350px;
 
+            @media (max-width:800px) {
+                width: 450px;
+            }
+
+            @media (max-width:500px) {
+                width: 90%;
+            }
         }
 
         .right {
-            width: calc(100% - 390px);
-            background-color: rgba(0, 0, 0, .6);
+            width: calc(100% - 350px);
+            background-color: rgba(0, 0, 0, 0.267);
             padding: 2rem;
             letter-spacing: 0.05rem;
+            position: relative;
 
-            .detail_tit {
-
-                h2 {
-                    font-size: 1.8rem;
-                    font-weight: 700;
-                }
+            @media (max-width:1050px) {
+                font-size: 0.9rem;
             }
 
-            .detail_cont {
-                display: flex;
-                align-items: flex-start;
-                margin-top: 2rem;
+            @media(max-width:800px) {
+                position: absolute;
+                width: 350px;
+                top: 60%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(10, 10, 10, 0.74);
+            }
 
-                .right_cont {
-                    margin-left: 2rem;
+            @media (max-width:500px) {
+                width: 80%;
+                padding: 0.5rem;
+            }
+
+            >div {
+                .detail_tit {
+
+                    h2 {
+                        font-size: 1.8rem;
+                        font-weight: 700;
+
+                        @media(max-width:1050px) {}
+
+                        font-size: 1.5rem;
+                    }
                 }
 
-                .inner_cont {
-                    display: table;
-                    max-width: 60%;
+                .detail_cont {
+                    display: flex;
+                    align-items: flex-start;
+                    margin-top: 2rem;
 
-                    .list_cont {
-                        line-height: 1.7;
-                        display: table-row;
+                    @media (max-width:800px) {
+                        display: block;
+                        margin-top: 1rem;
 
+                        .right_cont {
+                            text-align: right;
+
+                            .list_cont {
+                                dt {
+                                    width: 60px;
+                                    text-align: left;
+                                }
+                            }
+                        }
                     }
 
-                }
+                    .inner_cont {
+                        display: table;
 
+                        .list_cont {
+                            line-height: 1.7;
+                            display: table-row;
+
+                        }
+                    }
+                }
             }
 
             .last_cont {
@@ -153,7 +195,7 @@ export default {
 
                 dt {
                     display: flex;
-                    background-color: #c93131;
+                    background-color: var(--red);
                     border-radius: 10px;
                     justify-content: center;
                     align-items: center;
@@ -172,16 +214,16 @@ export default {
                     min-width: 143px;
 
                     &::-webkit-scrollbar {
-                        width: 10px;
+                        width: 7px;
                     }
 
                     &::-webkit-scrollbar-thumb {
-                        background-color: #888888;
+                        background-color: #58585870;
                         border-radius: 2px;
                     }
 
                     &::-webkit-scrollbar-track {
-                        background-color: rgb(15, 15, 15);
+                        background-color: rgba(87, 87, 87, 0.308);
                         border-radius: 2px;
                     }
 
@@ -199,9 +241,8 @@ dt {
     font-weight: normal;
     white-space: nowrap;
     display: table-cell;
-    color: rgb(122, 122, 122);
+    color: rgb(115, 211, 255);
     padding-right: 1rem;
-
 }
 
 dd {
@@ -236,5 +277,9 @@ dd {
     height: 13px;
     margin: 6px 2px 0 0;
     background-position: -200px -40px;
+
+    @media (max-width:800px) {
+        margin: 2px 0;
+    }
 }
 </style>

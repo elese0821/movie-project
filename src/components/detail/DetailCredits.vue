@@ -1,6 +1,6 @@
 <template>
     <div class="cre">
-        <h1>주요 출연진</h1>
+        <h1>CAST</h1>
         <div class="cre_wrap">
             <div class="credits" v-for="(cast, key) in movieCredits.cast.slice(0, 10)" :key="key">
                 <div>
@@ -19,13 +19,7 @@
                     </div>
                 </div>
             </div>
-
-            더보기
-
-
-
         </div>
-
         <h1 class="hide">총 출연진 & 제작진</h1>
     </div>
 </template>
@@ -40,60 +34,93 @@ export default {
 
     h1 {
         font-weight: 700;
-        padding: 1rem 0;
+        padding: 0 0 1rem;
+        color: var(--red);
     }
 
     .cre_wrap {
         display: flex;
         overflow: auto;
-        gap: 1.5rem;
-        padding: 1.5rem;
-        background-color: #131313;
-        border-radius: 5px 5px 0 0;
+        gap: 0.5rem;
+        padding: 1rem;
+        background-color: #0202024f;
+        border-radius: 10px;
 
         &::-webkit-scrollbar {
-            height: 7px;
+            height: 5px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: #888888c9;
+            background-color: #88888848;
             border-radius: 10px;
         }
 
         &::-webkit-scrollbar-track {
-            background-color: rgb(26, 26, 26);
+            background-color: rgba(59, 59, 59, 0.61);
             border-radius: 10px;
         }
 
         .credits {
 
             >div {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
 
                 .img_wrap {
+                    height: calc(100% - 40px);
 
                     .img {
+                        height: 100%;
+                        display: flex;
+                        overflow: hidden;
+                        align-items: end;
+                        min-width: 100px;
+                        border-radius: 10px;
 
                         img {
                             object-fit: cover;
-                            width: 150px;
-                            border-radius: 2px;
+                            width: 100%;
+                            height: 100%;
                         }
 
                         .noimg {
-                            background-color: #ebebeba9;
-                            width: 150px;
-                            border-radius: 1px;
-                            height: 225.33px;
-                            display: flex;
-                            align-items: center;
+                            background-color: #ebebeb00;
 
+                            img {
+                                transform: scale(1.2);
+                                opacity: 0.2;
+                            }
                         }
                     }
                 }
 
                 .credit_cont {
                     padding: 0.5rem;
-                    min-width: 170px;
+                    font-size: 0.7rem;
+                    word-break: keep-all;
+                    height: 40px;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background-color: #88888818;
+                        border-radius: 10px;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        background-color: rgb(26, 26, 26);
+                        border-radius: 10px;
+                    }
 
                     p {
                         color: aqua;

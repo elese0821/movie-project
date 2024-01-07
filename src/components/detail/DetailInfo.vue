@@ -1,6 +1,6 @@
 <template>
     <div id="info">
-        <h2>영상</h2>
+        <h2>MOVIE CLIP</h2>
         <div class="video_wrap">
             <div v-if="movieInfo.length > 0" v-for="(video, index) in movieInfo">
                 <div class="videos" :key="index">
@@ -17,8 +17,6 @@
         </div>
     </div>
 </template>
-
-
 <script>
 export default {
     props: ['movieInfo']
@@ -26,12 +24,13 @@ export default {
 </script>
 <style>
 #info {
-    padding: 1rem;
+    padding: 0 1rem 0;
 
     h2 {
         font-weight: 700;
         font-size: 2rem;
         margin-bottom: 1rem;
+        color: var(--red);
     }
 
     .video_wrap {
@@ -40,27 +39,33 @@ export default {
         gap: 1.5rem;
         overflow: auto;
         background-color: #131313;
-        border-radius: 5px 5px 0 0;
+        border-radius: 10px;
 
         &::-webkit-scrollbar {
-            height: 7px;
+            height: 5px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: #888888c9;
+            background-color: #88888848;
             border-radius: 10px;
         }
 
         &::-webkit-scrollbar-track {
-            background-color: rgb(26, 26, 26);
+            background-color: rgba(59, 59, 59, 0.61);
             border-radius: 10px;
         }
 
         >div {
             width: 50%;
             position: relative;
-            min-width: 500px;
+            max-width: 400px;
+            min-width: 400px;
+            border-radius: 10px;
+            overflow: hidden;
 
+            @media (max-width:800px) {
+                min-width: 280px;
+            }
 
             .videos {
                 display: flex;

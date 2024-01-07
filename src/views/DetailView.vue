@@ -7,7 +7,7 @@ import DetailIntro from '@/components/detail/DetailIntro.vue';
 import DetailReview from '@/components/detail/DetailReview.vue';
 import DetailCredits from '@/components/detail/DetailCredits.vue';
 import DetailInfo from '@/components/detail/DetailInfo.vue';
-// import Similarvideo from '@/components/detail/Similarvideo.vue';
+import HeaderSection from '../components/section/HeaderSection.vue';
 
 export default {
     name: "MovieDetailPage",
@@ -18,7 +18,7 @@ export default {
         DetailReview,
         DetailCredits,
         DetailInfo,
-        // Similarvideo,
+        HeaderSection
     },
 
     setup() {
@@ -26,7 +26,6 @@ export default {
         const movieInfo = ref(null);
         const movieReview = ref(null);
         const movieCredits = ref(null);
-        // const similar = ref(null);
 
         const route = useRoute();
 
@@ -48,57 +47,22 @@ export default {
 
                 const resMovieCredits = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?language=${language}&api_key=${apiKey}`);
                 movieCredits.value = resMovieCredits.data;
-
-                // const resSimilar = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/similar?language=${language}&page=${page}&api_key=${apiKey}`);
-                // similar.value = resSimilar.data.results;
-
             } catch (err) {
                 console.log(err);
             }
         });
         return {
             movieBasic, movieCredits, movieReview, movieInfo,
-            // similar
         }
     }
 }
 </script>
 <template>
-    <header id="header" role="banner">
-        <div class="header__inner">
-            <div class="header__nav">
-                <h1>let's <span>movie</span></h1>
-                <nav>
-                    <ul>
-                        <li><a href="#">월간 Top10</a></li>
-                        <li><a href="#">주간 Top10</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-
-
+    <HeaderSection />
     <main id="main">
         <DetailIntro v-if="movieBasic" :movieBasic="movieBasic" />
-        <DetailInfo v-if="movieInfo" :movieInfo="movieInfo" />
         <DetailCredits v-if="movieCredits" :movieCredits="movieCredits" />
+        <DetailInfo v-if="movieInfo" :movieInfo="movieInfo" />
         <DetailReview v-if="movieReview" :movieReview="movieReview" />
-        <!-- <Similarvideo v-if="similar" :similar="similar" /> -->
     </main>
 </template>
-
-<style lang="scss">
-.movie__cont {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    .movie {
-        width: 24%;
-        margin-bottom: 1.5%;
-        background-color: #ccc;
-    }
-}
-</style>

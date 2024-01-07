@@ -2,7 +2,7 @@
     --mainfont-nanum: "nanumSquareNeo";
     --mainfont-nexon: "nexonLv1";
 
-    --black: #000;
+    --black: #242424;
     --black100: #1b1b1b;
     --black200: #3a3a3a;
     --black300: #6b6b6b;
@@ -10,15 +10,15 @@
     --black500: #cbcbcb;
     --black600: #e5e5e5;
 
-    --white: #fff;
+    --white: #ffffff;
     --white100: #e7e7e7;
     --white200: #cacaca;
     --white300: #b8b8b8;
     --white400: #8e8e8e;
     --white500: #767676;
 
-    --red: rgb(255, 27, 11);
-    --sub: #fff;
+    --red: rgb(11, 178, 255);
+    --sub: #f0f1f5;
 
     font-family: var(--mainfont-nanum), var(--mainfont-nexon);
     font-size: 16px;
@@ -34,6 +34,5 @@
 
     @media (max-width: 800px) {
         font-size: 14px;
-        line-height: 1.4;
     }
 }
