@@ -42,6 +42,17 @@ npm install axios
 npm install vue-router
 ```
 
+- `npm install sass`:
+  Sass(Syntactically Awesome Style Sheets)  
+  Sass는 CSS의 확장으로, 변수, 중첩, 함수, 그리고 다른 피처를 사용하여 스타일시트를 더욱 효율적으로 작성하고 관리하는 도구입니다.
+
+- `npm install axios`:
+  Axios는 웹 요청을 간단하게 만들어주는 JavaScript 라이브러리로, HTTP 요청을 보내고 받는 작업을 쉽게 처리할 수 있게 해줍니다. 서버와의 통신하기 위해 사용했습니다.
+
+- `npm install vue-router`:
+  Vue.js 애플리케이션에서 라우팅을 관리하기 위한 Vue Router  
+  Vue Router는 Vue.js 프레임워크를 사용하여 SPA(Single Page Application)를 개발할 때 페이지 간의 네비게이션을 관리하는 도구로 사용됩니다. 페이지 간의 전환 및 URL 경로 관리 등을 위해 사용했습니다.
+
 ## 셋팅
 
 ```
