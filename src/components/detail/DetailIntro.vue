@@ -96,7 +96,7 @@ export default {
         position: absolute;
         left: 0;
         top: 0;
-        background-color: #00000070;
+        background-color: #000000bf;
         backdrop-filter: blur(2px);
         z-index: 1;
     }
