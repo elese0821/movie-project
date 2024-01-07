@@ -234,8 +234,6 @@ export default {
     }
 }
 
-
-
 dt {
     max-width: 100px;
     font-weight: normal;
@@ -253,13 +251,10 @@ dd {
         height: 20px;
     }
 
-
     .font_color {
         color: rgb(128, 128, 128)
     }
-
 }
-
 
 .ico_movie,
 .ico_logo {

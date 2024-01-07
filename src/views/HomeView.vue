@@ -207,10 +207,11 @@ html {
   }
 
   input {
-    padding: 1rem 2rem;
+    padding: 0.8rem 1rem;
     width: 100%;
-    border-radius: 50px;
-    background-color: #ffffff8a;
+    border-radius: 5px;
+    background-color: #ffffff38;
+    color: #fff;
 
     &:active,
     &:focus {
@@ -218,7 +219,8 @@ html {
     }
 
     &::placeholder {
-      color: #2e2e2ecb;
+      font-size: 0.95rem;
+      color: #ffffff49;
     }
 
     @media (max-width:500px) {
@@ -232,22 +234,21 @@ html {
     right: 1.4rem;
     top: 0.3rem;
     width: 40px;
-    height: 40px;
-    background-color: var(--black);
-    color: #fff;
-    border-radius: 50%;
+    height: 33px;
+    background-color: var(--red);
+    color: #ffffff9c;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s;
+    border-radius: 5px;
 
     @media (max-width:500px) {
       font-size: 0.8rem;
       height: 29px;
-      border-radius: 15px;
     }
 
     &:hover {
-      background-color: #00000075;
+      background-color: #00aeff7c;
     }
   }
 }
