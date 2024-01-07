@@ -97,7 +97,7 @@ export default {
         left: 0;
         top: 0;
         background-color: #00000070;
-        backdrop-filter: blur(7px);
+        backdrop-filter: blur(2px);
         z-index: 1;
     }
 
@@ -220,7 +220,7 @@ export default {
                     }
 
                     &::-webkit-scrollbar-thumb {
-                        background-color: #58585870;
+                        background-color: #00000070;
                         border-radius: 2px;
                     }
 
