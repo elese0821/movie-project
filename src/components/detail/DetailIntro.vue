@@ -125,7 +125,8 @@ export default {
             padding: 2rem;
             letter-spacing: 0.05rem;
             position: relative;
-
+            backdrop-filter: blur(10px);
+            
             @media (max-width:1050px) {
                 font-size: 0.9rem;
             }
