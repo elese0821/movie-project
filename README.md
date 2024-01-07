@@ -1,26 +1,26 @@
-# Vuejs TMDB API를 이용한 영화정보 사이트
+# Vue.js TMDB API를 이용한 영화정보 사이트
+
 Vue.js의 다양한 기능을 활용하여 영화 정보를 편리하게 찾을 수 있는 플랫폼입니다.
-<a href="https://movie-project-ecru.vercel.app/" target="_blank">사이트보기</a>
+
+[사이트보기](https://movie-project-ecru.vercel.app/)
 
 ## 프로젝트 목표
-
 - Vue.js의 기본 기능을 익히고, 이를 사용하여 실제 프로젝트를 구현함으로써 실무 능력을 향상
 - 영화 정보를 편리하게 찾을 수 있는 플랫폼을 제공하여 사용자들에게 즐거운 경험을 제공
 
 ## 프로젝트에 사용한 기술
-- Vue.js의 ref, onMounted훅, v-for, v-bind 디렉티브를 사용했습니다.
+- Vue.js의 `ref`, `onMounted` 훅, `v-for`, `v-bind` 디렉티브를 사용했습니다.
 - Sass를 사용하여 CSS 스타일을 관리했습니다.
 - Axios를 사용하여 영화 정보 API를 요청했습니다.
-## 사용 스택
 
-프레임워크: Vue.js
-컴파일러: Vite
-CSS 프레임워크: Sass
-라이브러리: Axios
+## 사용 스택
+- 프레임워크: Vue.js
+- 컴파일러: Vite
+- CSS 프레임워크: Sass
+- 라이브러리: Axios
 
 ## 라이브러리 설치
-
-```
+```bash
 npm install sass
 npm install axios
 npm install vue-router
@@ -91,46 +91,9 @@ Done. Now run:
    - v-bind(또는 :)
      - 요소의 속성에 JavaScript 표현식을 바인딩하는 데 사용
 
-## 코드 미리보가
-
-👉 Async/Await를 사용한 API 요청
-
-```javascript
-const fetchMovies = async (category) => {
-  // ...
-  const response = await axios.get(url, {
-    /* params */
-  })
-  movies.value = response.data.results
-  // ...
-}
-```
-
-👉 Popup 기능 구현
-
-```javascript
-const openPopup = async (movie) => {
-  // ...
-  isPopupOpen.value = true
-}
-
-const closePopup = () => {
-  isPopupOpen.value = false
-}
-```
-
-👉 onMounted 생명주기
-
-```javascript
-onMounted(async () => {
-  await fetchMovies('latest')
-  await homeCredit()
-})
-```
-
 ## 트러블 슈팅
 
 <details>
-<summary>ㄴㅇ</summary>
+<summary>1</summary>
 
 </details>
