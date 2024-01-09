@@ -2,8 +2,9 @@
 
 Vue.js와 TMDB API를 활용한 영화 정보 제공 사이트입니다. 사용자들은 최신 영화, 인기 영화, 개봉 예정 영화, 최고 평점 영화 등 다양한 카테고리의 영화 정보를 탐색하고, 영화 검색 기능을 통해 원하는 영화를 찾을 수 있습니다.
 
-[사이트보기](https://movie-project-ecru.vercel.app/)
-
+<div align="center">
+<a href="https://movie-project-ecru.vercel.app/"><img src='src/assets/img/cover.png' width="400px" /></a>
+</div>
 ## 프로젝트 목표
 
 - Vue.js 프레임워크를 이용한 SPA(Single Page Application) 개발
